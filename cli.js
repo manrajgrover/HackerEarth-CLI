@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-05-25 22:01:25
+* @Last Modified time: 2016-05-26 21:15:52
 */
 
 'use strict';
@@ -12,10 +12,30 @@
 const program = require('commander');
 const ora = require('ora');
 const chalk = require('chalk');
+const request = require('request');
+const config = require('./config');
 
-program
+const COMPILE_URL = 'http://api.hackerearth.com/code/compile/';
+const RUN_URL = 'http://api.hackerearth.com/code/run/';
+
+var data = {
+  'client_secret': config.CLIENT_SECRET,
+  'source': source,
+  'lang': 'PYTHON',
+};
+
+request.post({ url : RUN_URL, form : data}, function(err,response){
+  if(err){
+    console.log('Error');
+  }
+  else{
+    console.log(response);
+  }
+});
+
+/*program
   .version('0.0.1')
-  .option('-s, --source <required>','Provide path to source file')
-  .option('-i, --input [optional]','Provide path to input file')
-  .option('-o, --output [optional]','Provide path to output file')
+  .command('run [run]', 'Run program on HackerEarth Server.')
+  .command('compile [compile]', 'Compile program on HackerEarth Server.')
   .parse(process.argv);
+*/
