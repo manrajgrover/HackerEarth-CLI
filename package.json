@@ -29,7 +29,6 @@
   "homepage": "https://github.com/ManrajGrover/HackerEarth-CLI#readme",
   "dependencies": {
     "chalk": "1.1.3",
-    "commander": "2.9.0",
     "ora": "0.2.3",
     "request": "2.72.0"
   }
