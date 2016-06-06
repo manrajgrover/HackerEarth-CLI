@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-06-06 22:28:02
+* @Last Modified time: 2016-06-07 01:26:36
 */
 
 'use strict';
@@ -66,7 +66,7 @@ const argv = yargs
       .alias('i', 'input').describe('i', 'Input file path')
       .alias('l', 'language').describe('l', 'Language. Change `config` for default.')
       .alias('o', 'output').describe('o', 'Output file path')
-      .example('$0 run -s A.cpp -i Input00.in -o Output.txt -l 2')
+      .example('$0 run -s A.cpp -i Input00.in -o Output.txt -l CPP11')
       .argv;
 
     checkClientSecret();
@@ -118,7 +118,7 @@ const argv = yargs
       .demand(['s'])
       .alias('s', 'source').describe('s', 'Source Code file path')
       .alias('l', 'language').describe('l', 'Language. Change `config` for default.')
-      .example('$0 compile -s A.cpp -l CPP')
+      .example('$0 compile -s A.cpp -l CPP11')
       .argv;
 
     checkClientSecret();
