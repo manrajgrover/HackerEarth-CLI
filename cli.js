@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-06-06 21:13:52
+* @Last Modified time: 2016-06-06 22:22:54
 */
 
 'use strict';
@@ -21,7 +21,20 @@ const config = require('./config');
 
 const RUN_URL = 'https://api.hackerearth.com/code/run/';
 const COMPILE_URL = 'https://api.hackerearth.com/code/compile/';
-const LANGUAGES = [ 'C', 'CPP', 'CPP11', 'CLOJURE', 'CSHARP', 'JAVA', 'JAVASCRIPT', 'HASKELL', 'PERL', 'PHP', 'PYTHON', 'RUBY'];
+const LANGUAGES = {
+  "C" : "C (gcc 4.8.1)",
+  "CPP" : "C++ (g++ 4.8.1)",
+  "CPP11" : "C++ 11",
+  "CSHARP" : "C#",
+  "CLOJURE" : "Clojure (clojure 1.1.0)",
+  "HASKELL" : "Haskell (ghc 7.4.1)",
+  "JAVA" : "Java (openjdk 1.7.0_09)",
+  "JAVASCRIPT" : "JavaScript",
+  "PERL" : "Perl (perl 5.14.2)",
+  "RUBY" : "Ruby (ruby 2.1.1)",
+  "SCALA" : "Scala (scalac 2.9.1)",
+  "PHP" : "PHP (php 5.3.10)"
+}
 
 const openIssue = () => {
   console.log(chalk.yellow('If problem persist, please open an issue at https://github.com/ManrajGrover/HackerEarth-CLI/issues .'));
@@ -105,7 +118,7 @@ const argv = yargs
       .demand(['s'])
       .alias('s', 'source').describe('s', 'Source Code file path')
       .alias('l', 'language').describe('l', 'Language. Change `config` for default.')
-      .example('$0 run -s A.cpp -l CPP')
+      .example('$0 compile -s A.cpp -l CPP')
       .argv;
 
     checkClientSecret();
@@ -147,36 +160,23 @@ const argv = yargs
       .alias('l', 'list').describe('l', 'List language and their code').boolean('l')
       .example('sudo $0 config -l')
       .argv;
-    /*
+
     if (argv.list){
-      const spinner = ora('Getting languages').start();
-      request(LANG_URL, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-          var languages = JSON.parse(body), 
-              names = languages.languages.names, 
-              codes = languages.languages.codes;
-          spinner.stop();
-          var table = new Table({
-            head: ['Language', 'Code', 'Number'],
-            colWidths: [20, 20, 20]
-          });
-          for(let name in names){
-            table.push([names[name], name, codes[name]]);
-          }
-          console.log(table.toString());
-          end();
-        } else {
-          spinner.stop();
-          console.log(chalk.red(error));
-          openIssue();
-        }
+      var table = new Table({
+        head: ['Language', 'Code'],
+        colWidths: [ 30, 20]
       });
+      for(let name in LANGUAGES){
+        table.push([ LANGUAGES[name], name]);
+      }
+      console.log(table.toString());
+      end();
     }
     else{
       const questions = [{
           type: 'input',
-          name: 'api_key',
-          message: 'Enter API Key <leave blank incase unchanged>'
+          name: 'CLIENT_SECRET',
+          message: 'Enter CLIENT SECRET <leave blank incase unchanged>'
         } , {
           type: 'input',
           name: 'default_lang',
@@ -184,15 +184,15 @@ const argv = yargs
       }];
       inquirer.prompt(questions).then((answers) => {
         var obj = config;
-        if (answers.api_key !== ''){
-          obj.api_key = answers.api_key;
+        if (answers.CLIENT_SECRET !== ''){
+          obj.CLIENT_SECRET = answers.CLIENT_SECRET;
         }
         if (answers.default_lang !== ''){
           obj.default_lang = answers.default_lang;
         }
         fs.writeFileSync(__dirname+'/config.json', JSON.stringify(obj, null, 2), 'utf8');
       });
-    }*/
+    }
   })
   .help('h')
   .alias('h', 'help')

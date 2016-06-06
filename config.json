@@ -2,5 +2,5 @@
   "CLIENT_SECRET": "",
   "time_limit": 5,
   "memory_limit": 262144,
-  "default_lang": "PYTHON"
+  "default_lang": "CPP11"
 }
