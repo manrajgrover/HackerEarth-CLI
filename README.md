@@ -49,7 +49,7 @@ Examples:
 
 ```
 
-#### Command `run`
+#### Command `compile`
 
 ```
 $ hackerearth compile <options>
