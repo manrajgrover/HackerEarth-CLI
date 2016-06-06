@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-06-06 22:22:54
+* @Last Modified time: 2016-06-06 22:28:02
 */
 
 'use strict';
@@ -34,7 +34,7 @@ const LANGUAGES = {
   "RUBY" : "Ruby (ruby 2.1.1)",
   "SCALA" : "Scala (scalac 2.9.1)",
   "PHP" : "PHP (php 5.3.10)"
-}
+};
 
 const openIssue = () => {
   console.log(chalk.yellow('If problem persist, please open an issue at https://github.com/ManrajGrover/HackerEarth-CLI/issues .'));
