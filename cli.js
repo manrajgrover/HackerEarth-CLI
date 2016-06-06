@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-06-06 20:50:05
+* @Last Modified time: 2016-06-06 21:13:52
 */
 
 'use strict';
@@ -35,6 +35,14 @@ const end = () => {
   process.exit(-1);
 }
 
+const checkClientSecret = () => {
+  if(config.CLIENT_SECRET === ""){
+    console.log(chalk.red("Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this."));
+    openIssue();
+    process.exit(-1);
+  }
+}
+
 const argv = yargs
   .usage('$0 <command>')
   .command('run', 'Run code on HackerEarth server', (yargs) => {
@@ -48,11 +56,7 @@ const argv = yargs
       .example('$0 run -s A.cpp -i Input00.in -o Output.txt -l 2')
       .argv;
 
-    if(config.CLIENT_SECRET === ""){
-      console.log(chalk.red("Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this."));
-      openIssue();
-      process.exit(-1);
-    }
+    checkClientSecret();
 
     const source = fs.readFileSync(argv.source, 'utf8');
     var input = fs.readFileSync(argv.input, 'utf8');
@@ -91,6 +95,48 @@ const argv = yargs
         });
         table.push([ runStatus["status"], runStatus["memory_used"], runStatus["time_used"], result['web_link']]);
         console.log(table.toString());
+        end();
+      }
+    });
+  })
+  .command('compile', 'Compile code on HackerEarth server', (yargs) => {
+    var argv = yargs
+      .usage('Usage: $0 compile <options>')
+      .demand(['s'])
+      .alias('s', 'source').describe('s', 'Source Code file path')
+      .alias('l', 'language').describe('l', 'Language. Change `config` for default.')
+      .example('$0 run -s A.cpp -l CPP')
+      .argv;
+
+    checkClientSecret();
+
+    const source = fs.readFileSync(argv.source, 'utf8');
+    const spinner = ora('Compiling').start();
+    const lang = argv.language === undefined ? config.default_lang : argv.language;
+    var data = {
+      "client_secret": config.CLIENT_SECRET,
+      "async": 0,
+      "source": source,
+      "lang": lang,
+      "time_limit": config.time_limit,
+      "memory_limit": config.memory_limit
+    };
+    request.post({ url : COMPILE_URL, form : data}, (err,response) => {
+      if(err){
+        spinner.stop();
+        console.log(chalk.red('Error Occured'));
+        openIssue();
+      }
+      else{
+        spinner.stop();
+        const result = JSON.parse(response.body);
+        if(result.compile_status !== "OK"){
+          console.log(chalk.red('Compilation Error'));
+          console.log(chalk.red(result.compile_status));
+          process.exit(-1);
+        }
+        console.log(chalk.yellow('Compile Status: ')+ chalk.green(result.compile_status));
+        console.log(chalk.yellow('Check your code at: ')+ chalk.green(result.web_link));
         end();
       }
     });
