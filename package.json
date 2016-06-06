@@ -1,6 +1,6 @@
 {
   "name": "hackerearth-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HackerEarth Node CLI for running and compiling code",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,7 +29,12 @@
   "homepage": "https://github.com/ManrajGrover/HackerEarth-CLI#readme",
   "dependencies": {
     "chalk": "1.1.3",
+    "cli-table": "0.3.1",
+    "fs": "0.0.2",
+    "inquirer": "1.0.3",
+    "js-string-escape": "1.0.1",
     "ora": "0.2.3",
-    "request": "2.72.0"
+    "request": "2.72.0",
+    "yargs": "4.7.1"
   }
 }
