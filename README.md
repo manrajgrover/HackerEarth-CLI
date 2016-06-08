@@ -68,7 +68,7 @@ Examples:
 Run `$ sudo hackerearth config` to change configuration of your installation. This includes default language and API Key.
 
 ```
-Usage: sudo hackerearth config [options]
+$ sudo hackerearth config [options]
 
 Options:
   -h, --help  Show help                                      [boolean]
