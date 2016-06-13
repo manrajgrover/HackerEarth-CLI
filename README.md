@@ -1,4 +1,5 @@
 # HackerEath-CLI
+[![npm version](https://badge.fury.io/js/hackerearth-cli.svg)](https://www.npmjs.com/package/hackerearth-cli) [![npm](https://img.shields.io/npm/dt/hackerearth-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/hackerearth-cli) ![awesome](https://img.shields.io/badge/awesome-yes-green.svg)
 > CLI for compiling and running code using [HackerEarth API](https://www.hackerearth.com/docs/api/developers/code/legacy/).
 
 ## Install
@@ -68,7 +69,7 @@ Examples:
 Run `$ sudo hackerearth config` to change configuration of your installation. This includes default language and API Key.
 
 ```
-Usage: sudo hackerearth config [options]
+$ sudo hackerearth config [options]
 
 Options:
   -h, --help  Show help                                      [boolean]
@@ -80,4 +81,4 @@ Examples:
 
 ## License
 
-MIT © [Manraj Singh](https://github.com/ManrajGrover)
+[MIT](https://github.com/ManrajGrover/HackerEarth-CLI/blob/master/LICENSE) © [Manraj Singh](https://github.com/ManrajGrover)
