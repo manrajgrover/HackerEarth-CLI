@@ -4,7 +4,7 @@
 * @Author: Manraj Singh
 * @Date:   2016-05-24 21:54:43
 * @Last Modified by:   Manraj Singh
-* @Last Modified time: 2016-06-07 01:26:36
+* @Last Modified time: 2016-06-13 17:23:39
 */
 
 'use strict';
@@ -180,7 +180,7 @@ const argv = yargs
         } , {
           type: 'input',
           name: 'default_lang',
-          message: 'Enter default language number (Run `sudo hackerearth config -l` to list codes)'
+          message: 'Enter default language (Run `sudo hackerearth config -l` to list codes)'
       }];
       inquirer.prompt(questions).then((answers) => {
         var obj = config;
