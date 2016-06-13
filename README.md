@@ -2,6 +2,10 @@
 [![npm version](https://badge.fury.io/js/hackerearth-cli.svg)](https://www.npmjs.com/package/hackerearth-cli) [![npm](https://img.shields.io/npm/dt/hackerearth-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/hackerearth-cli) ![awesome](https://img.shields.io/badge/awesome-yes-green.svg)
 > CLI for compiling and running code using [HackerEarth API](https://www.hackerearth.com/docs/api/developers/code/legacy/).
 
+## Demo
+
+![Demo](https://raw.githubusercontent.com/ManrajGrover/HackerEarth-CLI/master/Assets/Demo.gif)
+
 ## Install
 
 Run the following command
