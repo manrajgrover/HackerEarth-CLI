@@ -1,5 +1,5 @@
 {
-  "CLIENT_SECRET": "",
+  "CLIENT_SECRET": "7cc5a72ecdd4955dcd45e579d14c284c53b45819",
   "time_limit": 5,
   "memory_limit": 262144,
   "default_lang": "CPP"
