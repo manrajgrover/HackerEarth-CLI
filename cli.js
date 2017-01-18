@@ -9,24 +9,23 @@ const ora = require('ora');
 const chalk = require('chalk');
 const request = require('request');
 const Table = require('cli-table');
-const jsStringEscape = require('js-string-escape')
 const config = require('./config');
 
 const RUN_URL = 'https://api.hackerearth.com/code/run/';
 const COMPILE_URL = 'https://api.hackerearth.com/code/compile/';
 const LANGUAGES = {
-  "C" : "C (gcc 4.8.1)",
-  "CPP" : "C++ (g++ 4.8.1)",
-  "CPP11" : "C++ 11",
-  "CSHARP" : "C#",
-  "CLOJURE" : "Clojure (clojure 1.1.0)",
-  "HASKELL" : "Haskell (ghc 7.4.1)",
-  "JAVA" : "Java (openjdk 1.7.0_09)",
-  "JAVASCRIPT" : "JavaScript",
-  "PERL" : "Perl (perl 5.14.2)",
-  "RUBY" : "Ruby (ruby 2.1.1)",
-  "SCALA" : "Scala (scalac 2.9.1)",
-  "PHP" : "PHP (php 5.3.10)"
+  'C': 'C (gcc 4.8.1)',
+  'CPP': 'C++ (g++ 4.8.1)',
+  'CPP11': 'C++ 11',
+  'CSHARP': 'C#',
+  'CLOJURE': 'Clojure (clojure 1.1.0)',
+  'HASKELL': 'Haskell (ghc 7.4.1)',
+  'JAVA': 'Java (openjdk 1.7.0_09)',
+  'JAVASCRIPT': 'JavaScript',
+  'PERL': 'Perl (perl 5.14.2)',
+  'RUBY': 'Ruby (ruby 2.1.1)',
+  'SCALA': 'Scala (scalac 2.9.1)',
+  'PHP': 'PHP (php 5.3.10)'
 };
 
 const openIssue = () => {
@@ -42,8 +41,8 @@ const end = () => {
 }
 
 const checkClientSecret = () => {
-  if(config.CLIENT_SECRET === ""){
-    console.log(chalk.red("Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this."));
+  if (config.CLIENT_SECRET === '') {
+    console.log(chalk.red('Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this.'));
     openIssue();
     process.exit(-1);
   }
@@ -70,36 +69,35 @@ const argv = yargs
     const spinner = ora('Running').start();
     const lang = argv.language === undefined ? config.default_lang : argv.language;
     var data = {
-      "client_secret": config.CLIENT_SECRET,
-      "async": 0,
-      "input": input,
-      "source": source,
-      "lang": lang,
-      "time_limit": config.time_limit,
-      "memory_limit": config.memory_limit
+      'client_secret': config.CLIENT_SECRET,
+      'async': 0,
+      'input': input,
+      'source': source,
+      'lang': lang,
+      'time_limit': config.time_limit,
+      'memory_limit': config.memory_limit
     };
-    request.post({ url : RUN_URL, form : data}, (err,response) => {
-      if(err){
+    request.post({url: RUN_URL, form: data}, (err, response) => {
+      if (err) {
         spinner.stop();
         console.log(chalk.red('Error Occured'));
         openIssue();
-      }
-      else{
+      } else {
         spinner.stop();
         const result = JSON.parse(response.body);
-        if(result.compile_status !== "OK"){
+        if (result.compile_status !== 'OK') {
           console.log(chalk.red('Compilation Error'));
           console.log(chalk.red(result.compile_status));
           process.exit(-1);
         }
         const runStatus = result.run_status;
-        var data = runStatus.output === undefined ? "" : runStatus.output;
+        var data = runStatus.output === undefined ? '' : runStatus.output;
         fs.writeFileSync(output, data, 'utf8');
         var table = new Table({
           head: ['Message', 'Memory', 'Time', 'Web Link'],
-          colWidths: [ 10, 10, 10, 40]
+          colWidths: [10, 10, 10, 40]
         });
-        table.push([ runStatus["status"], runStatus["memory_used"], runStatus["time_used"], result['web_link']]);
+        table.push([runStatus['status'], runStatus['memory_used'], runStatus['time_used'], result['web_link']]);
         console.log(table.toString());
         end();
       }
@@ -120,29 +118,28 @@ const argv = yargs
     const spinner = ora('Compiling').start();
     const lang = argv.language === undefined ? config.default_lang : argv.language;
     var data = {
-      "client_secret": config.CLIENT_SECRET,
-      "async": 0,
-      "source": source,
-      "lang": lang,
-      "time_limit": config.time_limit,
-      "memory_limit": config.memory_limit
+      'client_secret': config.CLIENT_SECRET,
+      'async': 0,
+      'source': source,
+      'lang': lang,
+      'time_limit': config.time_limit,
+      'memory_limit': config.memory_limit
     };
-    request.post({ url : COMPILE_URL, form : data}, (err,response) => {
-      if(err){
+    request.post({url: COMPILE_URL, form: data}, (err, response) => {
+      if (err) {
         spinner.stop();
         console.log(chalk.red('Error Occured'));
         openIssue();
-      }
-      else{
+      } else {
         spinner.stop();
         const result = JSON.parse(response.body);
-        if(result.compile_status !== "OK"){
+        if (result.compile_status !== 'OK') {
           console.log(chalk.red('Compilation Error'));
           console.log(chalk.red(result.compile_status));
           process.exit(-1);
         }
-        console.log(chalk.yellow('Compile Status: ')+ chalk.green(result.compile_status));
-        console.log(chalk.yellow('Check your code at: ')+ chalk.green(result.web_link));
+        console.log(chalk.yellow('Compile Status: ') + chalk.green(result.compile_status));
+        console.log(chalk.yellow('Check your code at: ') + chalk.green(result.web_link));
         end();
       }
     });
@@ -154,36 +151,35 @@ const argv = yargs
       .example('sudo $0 config -l')
       .argv;
 
-    if (argv.list){
+    if (argv.list) {
       var table = new Table({
         head: ['Language', 'Code'],
-        colWidths: [ 30, 20]
+        colWidths: [30, 20]
       });
-      for(let name in LANGUAGES){
-        table.push([ LANGUAGES[name], name]);
+      for (let name in LANGUAGES) {
+        table.push([LANGUAGES[name], name]);
       }
       console.log(table.toString());
       end();
-    }
-    else{
+    } else {
       const questions = [{
-          type: 'input',
-          name: 'CLIENT_SECRET',
-          message: 'Enter CLIENT SECRET <leave blank incase unchanged>'
-        } , {
-          type: 'input',
-          name: 'default_lang',
-          message: 'Enter default language (Run `sudo hackerearth config -l` to list codes)'
+        type: 'input',
+        name: 'CLIENT_SECRET',
+        message: 'Enter CLIENT SECRET <leave blank incase unchanged>'
+      }, {
+        type: 'input',
+        name: 'default_lang',
+        message: 'Enter default language (Run `sudo hackerearth config -l` to list codes)'
       }];
       inquirer.prompt(questions).then((answers) => {
         var obj = config;
-        if (answers.CLIENT_SECRET !== ''){
+        if (answers.CLIENT_SECRET !== '') {
           obj.CLIENT_SECRET = answers.CLIENT_SECRET;
         }
-        if (answers.default_lang !== ''){
+        if (answers.default_lang !== '') {
           obj.default_lang = answers.default_lang;
         }
-        fs.writeFileSync(__dirname+'/config.json', JSON.stringify(obj, null, 2), 'utf8');
+        fs.writeFileSync(__dirname + '/config.json', JSON.stringify(obj, null, 2), 'utf8');
       });
     }
   })
