@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 const yargs = require('yargs');
 const inquirer = require('inquirer');
 const fs = require('fs');
@@ -10,6 +8,7 @@ const chalk = require('chalk');
 const request = require('request');
 const Table = require('cli-table');
 const config = require('./config');
+const path = require('path');
 
 const RUN_URL = 'https://api.hackerearth.com/code/run/';
 const COMPILE_URL = 'https://api.hackerearth.com/code/compile/';
@@ -179,7 +178,7 @@ const argv = yargs
         if (answers.default_lang !== '') {
           obj.default_lang = answers.default_lang;
         }
-        fs.writeFileSync(__dirname + '/config.json', JSON.stringify(obj, null, 2), 'utf8');
+        fs.writeFileSync(path.resolve(__dirname, 'config.json'), JSON.stringify(obj, null, 2), 'utf8');
       });
     }
   })
