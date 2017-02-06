@@ -9,33 +9,28 @@ const request = require('request');
 const Table = require('cli-table');
 const config = require('./config');
 const path = require('path');
+const constants = require('./constants');
 
-const RUN_URL = 'https://api.hackerearth.com/code/run/';
-const COMPILE_URL = 'https://api.hackerearth.com/code/compile/';
-const LANGUAGES = {
-  'C': 'C (gcc 4.8.1)',
-  'CPP': 'C++ (g++ 4.8.1)',
-  'CPP11': 'C++ 11',
-  'CSHARP': 'C#',
-  'CLOJURE': 'Clojure (clojure 1.1.0)',
-  'HASKELL': 'Haskell (ghc 7.4.1)',
-  'JAVA': 'Java (openjdk 1.7.0_09)',
-  'JAVASCRIPT': 'JavaScript',
-  'PERL': 'Perl (perl 5.14.2)',
-  'RUBY': 'Ruby (ruby 2.1.1)',
-  'SCALA': 'Scala (scalac 2.9.1)',
-  'PHP': 'PHP (php 5.3.10)'
-};
+const LANGUAGES = constants.LANGUAGES;
+const ISSUES_URL = constants.ISSUES_URL;
+const API_DEV_URL = constants.API_DEV_URL;
+const GITHUB_URL = constants.GITHUB_URL;
+const RUN_URL = constants.RUN_URL;
+const COMPILE_URL = constants.COMPILE_URL;
 
 const openIssue = () => {
-  console.log(chalk.yellow('If problem persist, please open an issue at https://github.com/ManrajGrover/HackerEarth-CLI/issues .'));
+  console.log(
+    chalk.yellow(
+      `If problem persist, please open an issue at ${ISSUES_URL}.`
+    )
+  );
   process.exit(-1);
 }
 
 const end = () => {
   console.log(chalk.cyan('Copyright © 2016 Manraj Singh.'))
-  console.log(chalk.green('Powered by HackerEarth API (https://www.hackerearth.com/docs/api/developers/code/legacy/)'));
-  console.log(chalk.yellow('Support project at https://github.com/ManrajGrover/HackerEarth-CLI'));
+  console.log(chalk.green(`Powered by HackerEarth API (${API_DEV_URL})`));
+  console.log(chalk.yellow(`Support project at ${GITHUB_URL}`));
   process.exit(-1);
 }
 
