@@ -36,7 +36,11 @@ const end = () => {
 
 const checkClientSecret = () => {
   if (config.CLIENT_SECRET === '') {
-    console.log(chalk.red('Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this.'));
+    console.log(
+      chalk.red(
+        'Please add CLIENT SECRET to config. Run `sudo hackerearth config` for this.'
+      )
+    );
     openIssue();
     process.exit(-1);
   }
@@ -91,7 +95,12 @@ const argv = yargs
           head: ['Message', 'Memory', 'Time', 'Web Link'],
           colWidths: [10, 10, 10, 40]
         });
-        table.push([runStatus['status'], runStatus['memory_used'], runStatus['time_used'], result['web_link']]);
+        table.push([
+          runStatus['status'],
+          runStatus['memory_used'],
+          runStatus['time_used'],
+          result['web_link']
+        ]);
         console.log(table.toString());
         end();
       }
@@ -173,7 +182,11 @@ const argv = yargs
         if (answers.default_lang !== '') {
           obj.default_lang = answers.default_lang;
         }
-        fs.writeFileSync(path.resolve(__dirname, 'config.json'), JSON.stringify(obj, null, 2), 'utf8');
+        fs.writeFileSync(
+          path.resolve(__dirname, 'config.json'),
+          JSON.stringify(obj, null, 2),
+          'utf8'
+        );
       });
     }
   })
