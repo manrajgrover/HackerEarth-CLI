@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "HackerEarth Node CLI for running and compiling code",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./cli.js ./constants.js"
   },
   "repository": {
     "type": "git",
