@@ -46,6 +46,8 @@ const checkClientSecret = () => {
   }
 }
 
+/* eslint-disable no-unused-vars */
+
 const argv = yargs
   .usage('$0 <command>')
   .command('run', 'Run code on HackerEarth server', (yargs) => {
@@ -193,3 +195,6 @@ const argv = yargs
   .help('h')
   .alias('h', 'help')
   .argv;
+
+/* eslint-enable no-unused-vars */
+
