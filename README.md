@@ -10,7 +10,7 @@
 
 Run the following command
 
-```
+```shell
 $ npm install -g hackerearth-cli
 ```
 
@@ -23,7 +23,7 @@ You can get your HackerEarth API Key by visiting [HackerEath API](https://www.ha
 
 ### Commands available
 
-```
+```shell
 $ hackerearth <command>
 
 Commands:
@@ -39,7 +39,7 @@ Options:
 
 #### Command `run`
 
-```
+```shell
 $ hackerearth run <options>
 
 Options:
@@ -56,7 +56,7 @@ Examples:
 
 #### Command `compile`
 
-```
+```shell
 $ hackerearth compile <options>
 
 Options:
@@ -66,13 +66,12 @@ Options:
 
 Examples:
   hackerearth compile -s A.cpp -l CPP11
-
 ```
 
 #### Command `config`
 Run `$ sudo hackerearth config` to change configuration of your installation. This includes default language and API Key.
 
-```
+```shell
 $ sudo hackerearth config [options]
 
 Options:
