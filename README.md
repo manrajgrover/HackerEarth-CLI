@@ -82,6 +82,25 @@ Examples:
   sudo hackerearth config -l
 ```
 
+## Development
+
+Run:
+
+```sh
+$ git clone https://github.com/ManrajGrover/HackerEarth-CLI.git
+$ cd HackerEarth-CLI
+$ npm link
+```
+
+This will setup a symbolic link to the CLI. Any changes in source files will now be reflected when running the `hackerearth` command.
+
+To lint your code, run
+
+```sh
+$ npm run lint
+```
+
+
 ## License
 
 [MIT](https://github.com/ManrajGrover/HackerEarth-CLI/blob/master/LICENSE) © [Manraj Singh](https://github.com/ManrajGrover)
