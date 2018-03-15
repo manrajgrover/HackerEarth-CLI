@@ -4,7 +4,7 @@
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/ManrajGrover/HackerEarth-CLI/master/Assets/Demo.gif)
+![Demo](https://raw.githubusercontent.com/ManrajGrover/HackerEarth-CLI/master/art/demo.gif)
 
 ## Install
 
