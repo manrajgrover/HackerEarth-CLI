@@ -6,7 +6,7 @@ const fs = require('fs');
 const ora = require('ora');
 const chalk = require('chalk');
 const request = require('request');
-const Table = require('cli-table');
+const Table = require('cli-table2');
 const config = require('./config');
 const path = require('path');
 const constants = require('./constants');
@@ -197,4 +197,3 @@ const argv = yargs
   .argv;
 
 /* eslint-enable no-unused-vars */
-
