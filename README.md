@@ -1,10 +1,10 @@
 # HackerEath-CLI
-[![Build Status](https://travis-ci.org/ManrajGrover/HackerEarth-CLI.svg?branch=master)](https://travis-ci.org/ManrajGrover/HackerEarth-CLI) [![npm version](https://badge.fury.io/js/hackerearth-cli.svg)](https://www.npmjs.com/package/hackerearth-cli) [![npm](https://img.shields.io/npm/dt/hackerearth-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/hackerearth-cli) ![awesome](https://img.shields.io/badge/awesome-yes-green.svg)
+[![Build Status](https://travis-ci.org/manrajgrover/HackerEarth-CLI.svg?branch=master)](https://travis-ci.org/manrajgrover/HackerEarth-CLI) [![npm version](https://badge.fury.io/js/hackerearth-cli.svg)](https://www.npmjs.com/package/hackerearth-cli) [![npm](https://img.shields.io/npm/dt/hackerearth-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/hackerearth-cli) ![awesome](https://img.shields.io/badge/awesome-yes-green.svg)
 > CLI for compiling and running code using [HackerEarth API](https://www.hackerearth.com/docs/api/developers/code/legacy/).
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/ManrajGrover/HackerEarth-CLI/master/art/demo.gif)
+![Demo](https://raw.githubusercontent.com/manrajgrover/HackerEarth-CLI/master/art/demo.gif)
 
 ## Install
 
@@ -87,7 +87,7 @@ Examples:
 Run:
 
 ```sh
-$ git clone https://github.com/ManrajGrover/HackerEarth-CLI.git
+$ git clone https://github.com/manrajgrover/HackerEarth-CLI.git
 $ cd HackerEarth-CLI
 $ npm link
 ```
@@ -103,4 +103,4 @@ $ npm run lint
 
 ## License
 
-[MIT](https://github.com/ManrajGrover/HackerEarth-CLI/blob/master/LICENSE) © [Manraj Singh](https://github.com/ManrajGrover)
+[MIT](https://github.com/manrajgrover/HackerEarth-CLI/blob/master/LICENSE) © [Manraj Singh](https://github.com/manrajgrover)

@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ManrajGrover/HackerEarth-CLI.git"
+    "url": "git+https://github.com/manrajgrover/HackerEarth-CLI.git"
   },
   "bin": {
     "hackerearth": "cli.js"
@@ -24,9 +24,9 @@
   "author": "Manraj Singh <manrajsinghgrover@gmail.com> (http://manrajsingh.in)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ManrajGrover/HackerEarth-CLI/issues"
+    "url": "https://github.com/manrajgrover/HackerEarth-CLI/issues"
   },
-  "homepage": "https://github.com/ManrajGrover/HackerEarth-CLI#readme",
+  "homepage": "https://github.com/manrajgrover/HackerEarth-CLI#readme",
   "dependencies": {
     "chalk": "1.1.3",
     "cli-table2": "0.2.0",

@@ -1,8 +1,8 @@
 const RUN_URL = 'https://api.hackerearth.com/code/run/';
 const COMPILE_URL = 'https://api.hackerearth.com/code/compile/';
-const ISSUES_URL = 'https://github.com/ManrajGrover/HackerEarth-CLI/issues';
+const ISSUES_URL = 'https://github.com/manrajgrover/HackerEarth-CLI/issues';
 const API_DEV_URL = 'https://www.hackerearth.com/docs/api/developers/code/legacy/';
-const GITHUB_URL = 'https://github.com/ManrajGrover/HackerEarth-CLI';
+const GITHUB_URL = 'https://github.com/manrajgrover/HackerEarth-CLI';
 
 const LANGUAGES = {
   'C': 'C (gcc 4.8.1)',
