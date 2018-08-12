@@ -33,7 +33,7 @@
     "inquirer": "1.0.3",
     "ora": "0.2.3",
     "path": "^0.12.7",
-    "request": "2.72.0",
+    "request": "^2.88.0",
     "yargs": "4.7.1"
   },
   "devDependencies": {
